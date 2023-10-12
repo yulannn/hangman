@@ -1,9 +1,30 @@
 package hangman
 
-import "fmt"
+import (
+	"fmt"
+)
 
-func Hide() {
-	for i := 0; i < len(motrandom); i++ {
-		fmt.Printf("_")
+func AfficherMot(motSecret string, lettresDevinées []string) {
+	for _, lettre := range motSecret {
+		lettreStr := string(lettre)
+		if ContainsString(lettresDevinées, lettreStr) {
+			fmt.Printf("%s ", lettreStr)
+		} else {
+			fmt.Print("_ ")
+		}
 	}
+	fmt.Println()
+}
+
+func ContainsString(arr []string, target string) bool {
+	for _, item := range arr {
+		if item == target {
+			return true
+		}
+	}
+	return false
+}
+
+func isLowercaseLetter(lettre string) bool {
+	return lettre >= "a" && lettre <= "z"
 }

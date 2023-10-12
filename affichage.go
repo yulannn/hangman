@@ -19,16 +19,17 @@ func Affiche() {
 
 	fmt.Println("1. Jouer avec un mot Aléatoire")
 	fmt.Println("2. Quitter le jeu")
-	
+
 	var choice int
 	fmt.Scan(&choice)
 
 	switch choice {
 	case 1:
-		RandomWord()
+
 	case 2:
 		os.Exit(0)
-		default: fmt.Println("Faites un choix valide")
+	default:
+		fmt.Println("Faites un choix valide")
 	}
 }
 

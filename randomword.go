@@ -2,19 +2,15 @@ package hangman
 
 import (
 	"bufio"
-	"fmt"
 	"math/rand"
 	"os"
 	"time"
 )
 
-var motrandom string
-
-func RandomWord() {
+func RandomWord() (string, error) {
 	file, err := os.Open("Dictionnaire.txt")
 	if err != nil {
-		fmt.Println("Impossible d'ouvrir le fichier de mots.")
-		return
+		return "", err
 	}
 	defer file.Close()
 
@@ -23,21 +19,12 @@ func RandomWord() {
 	for scanner.Scan() {
 		mots = append(mots, scanner.Text())
 	}
-	if err := scanner.Err(); err != nil {
-		fmt.Println("Erreur de lecture du fichier de mots.")
-		return
-	}
-	rand.Seed(time.Now().UnixNano())
-	randomIndex := rand.Intn(len(mots))
-	motrandom = mots[randomIndex]
 
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Print(" Mot à deviner :") 
-	Hide()
-	fmt.Println("")
-	fmt.Println("")
+	if err := scanner.Err(); err != nil {
+		return "", err
+	}
+
+	rand.Seed(time.Now().UnixNano())
+	motRandom := mots[rand.Intn(len(mots))]
+	return motRandom, nil
 }
