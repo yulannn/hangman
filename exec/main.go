@@ -1,8 +1,11 @@
 package main
 
-import "hangman"
+import (
+	"hangman"
+)
 
 func main() {
-    hangman.Affiche()
+	hangman.Affiche()
 	hangman.RandomWord()
+	hangman.Hide()
 }
