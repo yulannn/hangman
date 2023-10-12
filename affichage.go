@@ -25,6 +25,7 @@ func Affiche() {
 
 	switch choice {
 	case 1:
+		Jeu()
 
 	case 2:
 		os.Exit(0)
