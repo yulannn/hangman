@@ -24,3 +24,7 @@ func ContainsString(arr []string, target string) bool {
 	}
 	return false
 }
+
+func IsLowercaseLetter(lettre string) bool {
+	return lettre >= "a" && lettre <= "z"
+}
