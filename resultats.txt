@@ -1,5 +1,9 @@
-Lettre correcte : e
-Lettre correcte : z
-Lettre incorrecte : z
-Tentative incorrecte : Zizi
-Partie gagnée : araignee
+Lettre demandée : e
+Lettre correcte 
+
+Lettre demandée : z
+Lettre incorrecte 
+
+Lettre demandée : e
+Lettre déja choisie 
+

@@ -49,9 +49,9 @@ func Jeu() {
 			var lettre string
 			fmt.Print("Entrez une lettre : ")
 			fmt.Scanln(&lettre)
-
 			lettre = strings.ToLower(lettre)
-			fichier.WriteString("Lettre correcte : " + lettre + "\n")
+			fichier.WriteString("Lettre demandée : " + lettre + "\n")
+			
 			
 			if len(lettre) != 1 || !IsLowercaseLetter(lettre) {
 				fmt.Println("Veuillez entrer une seule lettre en minuscules.")
@@ -60,6 +60,7 @@ func Jeu() {
 
 			if ContainsString(lettresDevinées, lettre) {
 				fmt.Println("Vous avez déjà deviné cette lettre.")
+				fichier.WriteString("Lettre déja choisie \n\n")
 				continue
 			}
 
@@ -68,8 +69,11 @@ func Jeu() {
 			if !strings.Contains(motSecret, lettre) {
 				fmt.Println("La lettre n'est pas dans le mot.")
 				chance_max--
-				fichier.WriteString("Lettre incorrecte : " + lettre + "\n")
-			}
+				fichier.WriteString("Lettre incorrecte \n\n")
+				} else {
+					fichier.WriteString("Lettre correcte \n\n")
+				}
+			
 
 			AfficherMot(motSecret, lettresDevinées)
 		} else {
