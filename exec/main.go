@@ -5,7 +5,5 @@ import (
 )
 
 func main() {
-	hangman.Affiche()
-	hangman.RandomWord()
-	hangman.Hide()
+    hangman.Affiche()
 }

@@ -19,7 +19,6 @@ func RandomWord() {
 	defer file.Close()
 
 	var mots []string
-
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		mots = append(mots, scanner.Text())
@@ -31,5 +30,14 @@ func RandomWord() {
 	rand.Seed(time.Now().UnixNano())
 	randomIndex := rand.Intn(len(mots))
 	motrandom = mots[randomIndex]
-	fmt.Printf("Mot au hasard : %s\n", motrandom)
+
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Print(" Mot à deviner :") 
+	Hide()
+	fmt.Println("")
+	fmt.Println("")
 }
