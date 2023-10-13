@@ -2,8 +2,8 @@ package hangman
 
 import (
 	"fmt"
-	"strings"
 	"os"
+	"strings"
 )
 
 func Jeu() {
@@ -24,6 +24,31 @@ func Jeu() {
 	fmt.Println("Bienvenue au jeu du pendu !")
 
 	for chance := 0; chance < chance_max; chance++ {
+
+		switch chance_max {
+		case 9:
+			Ascii1()
+		case 8:
+			Ascii2()
+		case 7:
+			Ascii3()
+		case 6:
+			Ascii4()
+		case 5:
+			Ascii5()
+		case 4:
+			Ascii6()
+		case 3:
+			Ascii7()
+		case 2:
+			Ascii8()
+		case 1:
+			Ascii9()
+		case 0:
+			Ascii10()
+
+		}
+
 		var devinerMotOuLettre string
 		fmt.Printf("Il vous reste %d tentatives \n", chance_max)
 		fmt.Print("Voulez-vous deviner un mot complet ou une lettre ? (Mot/Lettre): ")
@@ -52,7 +77,7 @@ func Jeu() {
 
 			lettre = strings.ToLower(lettre)
 			fichier.WriteString("Lettre correcte : " + lettre + "\n")
-			
+
 			if len(lettre) != 1 || !IsLowercaseLetter(lettre) {
 				fmt.Println("Veuillez entrer une seule lettre en minuscules.")
 				continue
@@ -82,7 +107,6 @@ func Jeu() {
 			fichier.WriteString("Partie perdue : " + motSecret + "\n")
 		}
 
-		// Vérifier si toutes les lettres ont été devinées
 		if MotDevine(motSecret, lettresDevinées) {
 			fmt.Println("Félicitations ! Vous avez gagné en devinant toutes les lettres du mot.")
 			fichier.WriteString("Partie gagnée, le mot était : " + motSecret + "\n")
@@ -91,7 +115,6 @@ func Jeu() {
 	}
 }
 
-// Vérifier si toutes les lettres du mot ont été devinées
 func MotDevine(motSecret string, lettresDevinées []string) bool {
 	for _, lettre := range motSecret {
 		if !strings.ContainsRune(strings.Join(lettresDevinées, ""), lettre) {
