@@ -1,9 +1,44 @@
 Lettre correcte : a
-Lettre incorrecte : a
+Lettre demandée : a
+Lettre incorrecte 
+
 Lettre correcte : e
-Lettre incorrecte : e
-Lettre correcte : m
-Lettre correcte : c
-Lettre incorrecte : c
+Lettre demandée : e
+Lettre correcte 
+
 Lettre correcte : w
-Lettre incorrecte : w
+Lettre demandée : w
+Lettre incorrecte 
+
+Lettre correcte : x
+Lettre demandée : x
+Lettre incorrecte 
+
+Lettre correcte : p
+Lettre demandée : p
+Lettre incorrecte 
+
+Lettre correcte : o
+Lettre demandée : o
+Lettre correcte 
+
+Lettre correcte : y
+Lettre demandée : y
+Lettre incorrecte 
+
+Lettre correcte : k
+Lettre demandée : k
+Lettre incorrecte 
+
+Lettre correcte : q
+Lettre demandée : q
+Lettre incorrecte 
+
+Lettre correcte : f
+Lettre demandée : f
+Lettre incorrecte 
+
+Lettre correcte : d
+Lettre demandée : d
+Lettre incorrecte 
+
