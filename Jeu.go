@@ -24,6 +24,28 @@ func Jeu() {
 	fmt.Println("Bienvenue au jeu du pendu !")
 
 	for chance := 0; chance < chance_max; {
+		switch chance {
+        case 1:
+            Ascii1()
+        case 2:
+            Ascii2()
+        case 3:
+            Ascii3()
+        case 4:
+            Ascii4()
+        case 5:
+            Ascii5()
+        case 6:
+            Ascii6()
+        case 7:
+            Ascii7()
+        case 8:
+            Ascii8()
+        case 9:
+            Ascii9()
+
+        }
+
 		var devinerMotOuLettre string
 		fmt.Printf("Il vous reste %d tentatives \n", chance_max-chance)
 		fmt.Print("Voulez-vous deviner un mot complet ou une lettre ? (Mot/Lettre): ")
@@ -43,9 +65,10 @@ func Jeu() {
 				fmt.Println("Ce n'est pas le bon mot.")
 				chance += 2
 				fichier.WriteString("Tentative incorrecte : " + motDevine + "\n")
-				if chance == chance_max {
+				if chance >= chance_max {
 					fmt.Println("VOUS AVEZ PERDU")
 					fmt.Printf("LE MOT ETAIT %s\n", motSecret)
+					Ascii10()
 					fichier.WriteString("Partie perdue : " + motSecret + "\n")
 				}
 				continue
@@ -88,13 +111,13 @@ func Jeu() {
 			fmt.Println("Répondez avec 'Mot' ou 'Lettre'.")
 		}
 
-		if chance == chance_max {
+		if chance >= chance_max {
 			fmt.Println("VOUS AVEZ PERDU")
 			fmt.Printf("LE MOT ETAIT %s\n", motSecret)
+			Ascii10()
 			fichier.WriteString("Partie perdue : " + motSecret + "\n")
 		}
-
-		// Vérifier si toutes les lettres ont été devinées
+		
 		if MotDevine(motSecret, lettresDevinées) {
 			fmt.Println("Félicitations ! Vous avez gagné en devinant toutes les lettres du mot.")
 			fichier.WriteString("Partie gagnée, le mot était : " + motSecret + "\n")
@@ -103,7 +126,6 @@ func Jeu() {
 	}
 }
 
-// Vérifier si toutes les lettres du mot ont été devinées
 func MotDevine(motSecret string, lettresDevinées []string) bool {
 	for _, lettre := range motSecret {
 		if !strings.ContainsRune(strings.Join(lettresDevinées, ""), lettre) {
