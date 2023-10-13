@@ -23,9 +23,9 @@ func Jeu() {
 	}
 	fmt.Println("Bienvenue au jeu du pendu !")
 
-	for chance := 0; chance <= chance_max; chance++ {
+	for chance := 0; chance < chance_max; {
 		var devinerMotOuLettre string
-		fmt.Printf("Il vous reste %d tentatives \n", chance_max)
+		fmt.Printf("Il vous reste %d tentatives \n", chance_max-chance)
 		fmt.Print("Voulez-vous deviner un mot complet ou une lettre ? (Mot/Lettre): ")
 		fmt.Scanln(&devinerMotOuLettre)
 		devinerMotOuLettre = strings.ToLower(devinerMotOuLettre)
@@ -41,21 +41,24 @@ func Jeu() {
 				break
 			} else {
 				fmt.Println("Ce n'est pas le bon mot.")
-				chance++
+				chance += 2
 				fichier.WriteString("Tentative incorrecte : " + motDevine + "\n")
-				fmt.Println(chance)
-				fmt.Println(chance_max)
-				
+				if chance == chance_max {
+					fmt.Println("VOUS AVEZ PERDU")
+					fmt.Printf("LE MOT ETAIT %s\n", motSecret)
+					fichier.WriteString("Partie perdue : " + motSecret + "\n")
+				}
 				continue
+				
 			}
+			
 		} else if devinerMotOuLettre == "lettre" {
 			var lettre string
 			fmt.Print("Entrez une lettre : ")
 			fmt.Scanln(&lettre)
 			lettre = strings.ToLower(lettre)
 			fichier.WriteString("Lettre demandée : " + lettre + "\n")
-			fmt.Println(chance)
-			fmt.Println(chance_max)
+
 			
 			
 			if len(lettre) != 1 || !IsLowercaseLetter(lettre) {
@@ -73,7 +76,7 @@ func Jeu() {
 
 			if !strings.Contains(motSecret, lettre) {
 				fmt.Println("La lettre n'est pas dans le mot.")
-				
+				chance += 1 
 				fichier.WriteString("Lettre incorrecte \n\n")
 				} else {
 					fichier.WriteString("Lettre correcte \n\n")
@@ -85,7 +88,7 @@ func Jeu() {
 			fmt.Println("Répondez avec 'Mot' ou 'Lettre'.")
 		}
 
-		if chance_max == 0 {
+		if chance == chance_max {
 			fmt.Println("VOUS AVEZ PERDU")
 			fmt.Printf("LE MOT ETAIT %s\n", motSecret)
 			fichier.WriteString("Partie perdue : " + motSecret + "\n")
