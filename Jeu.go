@@ -49,13 +49,13 @@ func Jeu() {
 		var devinerMotOuLettre string
 		fmt.Printf("Il vous reste %d tentatives \n", chance_max-chance)
 		fmt.Print("Voulez-vous deviner un mot complet ou une lettre ? (Mot/Lettre): ")
-		fmt.Scanln(&devinerMotOuLettre)
+		fmt.Scan(&devinerMotOuLettre)
 		devinerMotOuLettre = strings.ToLower(devinerMotOuLettre)
 
 		if devinerMotOuLettre == "mot" {
 			var motDevine string
 			fmt.Print("Entrez le mot complet : ")
-			fmt.Scanln(&motDevine)
+			fmt.Scan(&motDevine)
 
 			if motDevine == motSecret {
 				fmt.Printf("Félicitations ! Vous avez deviné le mot : %s\n", motSecret)
