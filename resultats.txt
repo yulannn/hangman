@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tentative incorrecte : mot
 Lettre demandée : a
 Lettre correcte 
@@ -7,3 +8,5 @@ Tentative incorrecte : a
 Tentative incorrecte : a
 Tentative incorrecte : a
 Partie perdue : effrayant
+=======
+>>>>>>> 2c7c71505990ec408297b483ff29a491c392797e
