@@ -1,7 +1,16 @@
 package main
 
-import "hangman"
+import (
+	"fmt"
+	"hangman"
+)
 
 func main() {
-    hangman.Affiche()
+	for {
+		hangman.Affiche()
+		if !hangman.Rejouer() {
+			break
+		}
+	}
+	fmt.Println("Merci d'avoir jouÃ© ! Au revoir.")
 }

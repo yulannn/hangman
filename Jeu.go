@@ -4,26 +4,21 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"os"
+	"os/exec"
+	"runtime"
 	"strings"
 )
 
-type Joueur struct {
-	xp_max int
-	xp     int
-	niveau int
-}
-
-func (p *Joueur) init(xp_max int, xp int, niveau int) {
-	p.xp_max = xp_max
-	p.xp = xp
-	p.niveau = niveau
-
-}
-
-func (p *Joueur) Niveau() {
-	if p.xp == p.xp_max {
-		p.niveau += 1
+func clearConsole() {
+	var cmd *exec.Cmd
+	if runtime.GOOS == "windows" {
+		cmd = exec.Command("cmd", "/c", "cls")
+	} else {
+		cmd = exec.Command("clear")
 	}
+
+	cmd.Stdout = os.Stdout
+	cmd.Run()
 }
 
 func Jeu() {
@@ -41,7 +36,8 @@ func Jeu() {
 		fmt.Printf("Erreur lors de la récupération du mot aléatoire : %v\n", err)
 		return
 	}
-	fmt.Println("Bienvenue au jeu du pendu !")
+	clearConsole()
+	color.Blue("Bienvenue au jeu du pendu !")
 
 	for chance := 0; chance < chance_max; {
 
@@ -68,25 +64,29 @@ func Jeu() {
 		}
 
 		var devinerMotOuLettre string
-		color.Blue("Il vous reste %d tentatives \n", chance_max-chance)
-		color.Blue("Voulez-vous deviner un mot complet ou une lettre ? (m/l): ")
+		color.Cyan("Il vous reste %d tentatives \n", chance_max-chance)
+		color.Cyan("[?] Voulez-vous deviner un mot complet ou une lettre ? (m/l): ")
 		fmt.Scan(&devinerMotOuLettre)
+		clearConsole()
 		devinerMotOuLettre = strings.ToLower(devinerMotOuLettre)
-
+		AfficherLettresDevinées(lettresDevinées, motSecret)
 		if devinerMotOuLettre == "m" {
 			var motDevine string
 			fmt.Print("Entrez le mot complet : ")
 			fmt.Scan(&motDevine)
 
 			if motDevine == motSecret {
+				clearConsole()
 				color.Green("Félicitations ! Vous avez deviné le mot : %s\n", motSecret)
 				fichier.WriteString("Partie gagnée : " + motSecret + "\n")
 				break
 			} else {
+				clearConsole()
 				color.Red("Ce n'est pas le bon mot.")
 				chance += 2
 				fichier.WriteString("Tentative incorrecte : " + motDevine + "\n")
 				if chance >= chance_max {
+					clearConsole()
 					color.Red("VOUS AVEZ PERDU")
 					color.Red("LE MOT ETAIT %s\n", motSecret)
 					fichier.WriteString("Partie perdue : " + motSecret + "\n")
@@ -130,6 +130,7 @@ func Jeu() {
 		}
 
 		if chance >= chance_max {
+			clearConsole()
 			color.Red("VOUS AVEZ PERDU")
 			Ascii10()
 			fmt.Printf("LE MOT ETAIT %s\n", motSecret)
@@ -137,6 +138,7 @@ func Jeu() {
 		}
 
 		if MotDevine(motSecret, lettresDevinées) {
+			clearConsole()
 			fmt.Println("Félicitations ! Vous avez gagné en devinant toutes les lettres du mot.")
 			fichier.WriteString("Partie gagnée, le mot était : " + motSecret + "\n")
 			break
@@ -151,4 +153,17 @@ func MotDevine(motSecret string, lettresDevinées []string) bool {
 		}
 	}
 	return true
+}
+
+func AfficherLettresDevinées(lettresDevinées []string, motSecret string) {
+	fmt.Print("Lettres déjà utilisées : ")
+	for _, lettre := range lettresDevinées {
+		if strings.Contains(motSecret, lettre) {
+			color.New(color.FgGreen).Print(lettre)
+		} else {
+			color.New(color.FgRed).Print(lettre)
+		}
+		fmt.Print(" ")
+	}
+	fmt.Println()
 }

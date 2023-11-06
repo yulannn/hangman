@@ -1,44 +1,9 @@
-Lettre correcte : a
+Tentative incorrecte : mot
 Lettre demandée : a
-Lettre incorrecte 
-
-Lettre correcte : e
-Lettre demandée : e
 Lettre correcte 
 
-Lettre correcte : w
-Lettre demandée : w
-Lettre incorrecte 
-
-Lettre correcte : x
-Lettre demandée : x
-Lettre incorrecte 
-
-Lettre correcte : p
-Lettre demandée : p
-Lettre incorrecte 
-
-Lettre correcte : o
-Lettre demandée : o
-Lettre correcte 
-
-Lettre correcte : y
-Lettre demandée : y
-Lettre incorrecte 
-
-Lettre correcte : k
-Lettre demandée : k
-Lettre incorrecte 
-
-Lettre correcte : q
-Lettre demandée : q
-Lettre incorrecte 
-
-Lettre correcte : f
-Lettre demandée : f
-Lettre incorrecte 
-
-Lettre correcte : d
-Lettre demandée : d
-Lettre incorrecte 
-
+Tentative incorrecte : a
+Tentative incorrecte : a
+Tentative incorrecte : a
+Tentative incorrecte : a
+Partie perdue : effrayant
