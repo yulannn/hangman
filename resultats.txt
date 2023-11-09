@@ -1,12 +1,17 @@
-<<<<<<< HEAD
-Tentative incorrecte : mot
 Lettre demandée : a
 Lettre correcte 
 
-Tentative incorrecte : a
-Tentative incorrecte : a
-Tentative incorrecte : a
-Tentative incorrecte : a
-Partie perdue : effrayant
-=======
->>>>>>> 2c7c71505990ec408297b483ff29a491c392797e
+Lettre demandée : e
+Lettre correcte 
+
+Tentative incorrecte : effrayant
+Lettre demandée : f
+Lettre incorrecte 
+
+Lettre demandée : m
+Lettre incorrecte 
+
+Lettre demandée : l
+Lettre correcte 
+
+Partie gagnée : epouvantail
